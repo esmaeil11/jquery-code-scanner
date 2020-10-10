@@ -1,14 +1,14 @@
 (function ($) {
     $.fn.codeScanner = function (options) {
-        var settings = $.extend({}, $.fn.codeScanner.defaults, options);
+        let settings = $.extend({}, $.fn.codeScanner.defaults, options);
 
         return this.each(function () {
-            var pressed = false;
-            var chars = [];
-            var $input = $(this);
+            let pressed = false;
+            let chars = [];
+            let $input = $(this);
 
             $(window).keypress(function (e) {
-                var keycode = (e.which) ? e.which : e.keyCode;
+                let keycode = (e.which) ? e.which : e.keyCode;
                 if ((keycode >= 65 && keycode <= 90) ||
                     (keycode >= 97 && keycode <= 122) ||
                     (keycode >= 48 && keycode <= 57)
@@ -19,7 +19,7 @@
                 if (pressed == false) {
                     setTimeout(function () {
                         if (chars.length >= settings.minEntryChars) {
-                            var barcode = chars.join('');
+                            let barcode = chars.join('');
                             settings.onScan($input, barcode);
                         }
                         chars = [];
